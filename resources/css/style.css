@@ -1,0 +1,402 @@
+body {
+  background-color: #FFFFFF;
+  padding-left: 10px;
+  padding-right: 10px;
+  max-width: 600px;
+  /*min-width: 200px;*/
+  margin-left: auto;
+  margin-right: auto;
+}
+.help-block {
+  /*display: none !important;*/
+}
+
+
+
+.content {
+  /*margin-top: 15px;*/
+}
+
+/*===================================*/
+
+/*Div*/
+
+/*===================================*/
+
+div.logo {
+  padding-top: 10px;
+}
+
+div {
+  /*margin-top: 10px;*/
+}
+
+/*===================================*/
+
+/*Form*/
+
+/*===================================*/
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 2px solid #e5e5e5;
+  margin: 1em 0;
+  padding: 0;
+}
+
+legend {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 21px;
+    line-height: inherit;
+    color: #333;
+    border: 0;
+    border-bottom: none;
+}
+
+legend#personalia {
+  color: #016FBA;
+  text-align: center;
+  font-size: 24px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 26.4px;
+  /* padding-bottom: 10px; */
+  padding-top: 20px;
+  /* border-bottom: 1px solid black; */
+  width: 185px;
+  /* margin-bottom: 20px; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+legend#tilleggsopplysninger {
+  color: #016FBA;
+  text-align: center;
+  font-size: 24px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 500;
+  line-height: 26.4px;
+  /* padding-bottom: 10px; */
+  padding-top: 20px;
+  /* border-bottom: 1px solid black; */
+  /*width: 200px;*/
+  /* margin-bottom: 20px; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+fieldset {
+  border: none;
+  margin: 0;
+  min-width: 250px;
+}
+
+label {
+  font-size: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+/*
+.container { width: 800px !important; }
+*/
+/* Custom, iPhone Retina */
+/*
+@media only screen and (min-width: 320px) {
+.container { width: 800px !important; }
+
+}
+
+/* Extra Small Devices, Phones */
+/*
+@media only screen and (min-width: 480px) {
+.container { width: 800px !important; }
+
+}
+
+/* Small Devices, Tablets */
+/*
+@media only screen and (min-width: 768px) {
+.container { width: 800px !important; }
+
+}
+
+/* Medium Devices, Desktops */
+/*
+@media only screen and (min-width: 992px) {
+
+.form-horizontal{
+
+}
+/*
+.container { width: 800px !important; }
+  .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9 {
+
+
+  }
+  .input-group {
+
+  }
+}
+
+/* Large Devices, Wide Screens */
+/*
+@media only screen and (min-width: 1200px) {
+.container { width: 800px !important; }
+
+}*/
+
+/*===================================*/
+
+/*Inputs*/
+
+/*===================================*/
+
+.radios{
+  position: relative;
+  left: -15px;
+  margin-bottom: 15px;
+}
+
+select:valid{
+  color: black;
+}
+
+select:invalid{
+  color: black;/*#9a9a9a;*/
+}
+
+option{
+  color: black;
+}
+
+option:active{
+  color: black;
+}
+
+/*
+input[name=poststed]:active:focus::selection {
+  pointer-events: none;
+}
+/*
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 0px;
+  margin-right: 0px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=email] {
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 0px;
+  margin-right: 0px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=radio] {
+  padding: 12px 20px;
+  margin-top: 10px;
+  margin-left: 0px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+input[type=number] {
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: 0px;
+  margin-right: 0px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+/*
+input[type=submit]:hover {
+  background-color: #8b0000;
+}
+
+/*===================================*/
+
+/*Button*/
+
+/*===================================*/
+
+
+
+.btn {
+
+    width: 100%;
+}
+
+.btn-warning {
+    color: #fff;
+    background-color: #016FBA;
+    border-color: #016FBA;
+    width: 100%;
+}
+
+.btn-warning {
+  /*  background-image: -webkit-linear-gradient(top,#016FBA 0,#016FBA 100%);
+    background-image: -o-linear-gradient(top,#f0ad4e 0,#eb9316 100%);
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#2e6da4),to(#2e6da4));
+    background-image: linear-gradient(to bottom,#286090 0,#337ab7 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff0ad4e', endColorstr='#ffeb9316', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+    background-repeat: repeat-x;
+    border-color: #016FBA;*/
+    background-image: none;
+    background-image: none;
+    background-image: none;
+    background-image: none;
+    filter: none;
+    filter: none;
+    background-repeat:none;
+    border-color: #016FBA;
+}
+
+.btn-danger, .btn-default, .btn-info, .btn-primary, .btn-success, .btn-warning {
+    text-shadow: 0 -1px 0 rgba(0,0,0,.2);
+    -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
+    width: 100%;
+}
+
+.btn-warning:hover {
+    color: #fff;
+    background-color: #017FFF;
+    border-color: #017FFF;
+}
+
+.btn:hover {
+    color: #333;
+    text-decoration: none;
+}
+
+/*
+button[type=submit] {
+  width: 100%;
+  background-color: #016FBA;
+  color: white;
+  padding: 14px 20px;
+  margin: 15px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+/*===================================*/
+
+/*Images*/
+
+/*===================================*/
+
+img#personalialogo {
+  /* Old
+	width: 50px;
+	height: 50px;
+	float: right;
+	position: relative;
+	right: -8px;*/
+  width: 50px;
+  height: 50px;
+  float: right;
+  position: relative;
+  left: 5px;
+}
+
+img#logo {
+  width: 300px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*===================================*/
+
+/*Validation*/
+
+/*===================================*/
+
+#success_message {
+  display: none;
+}
+
+form input::-webkit-validation-bubble-message,
+form select::-webkit-validation-bubble-message,
+form textarea::-webkit-validation-bubble-message {
+    display:none;
+}
+
+
+/*
+.invalid {
+  border: 2px solid yellow;
+}
+input#fornavn {
+  border: 2px solid red;
+}
+
+/* input:valid:focus{
+  border: 2px solid blue;
+  outline: none;
+}
+
+input:invalid::after{
+  border: 2px solid red;
+  outline: none;
+} */
+
+/* style all input elements with a required attribute */
+
+/*
+input:required {
+/*  box-shadow: 4px 4px 20px rgba(200, 0, 0, 0.85); */
+
+/**
+ * style input elements that have a required
+ * attribute and a focus state
+ */
+
+/*
+input:required:invalid {
+  border: 1px solid red;
+  outline: none;
+}*/
+
+/**
+ * style input elements that have a required
+ * attribute and a hover state
+ */
+
+/*
+input:required:hover {
+  opacity: 1;
+}*/
