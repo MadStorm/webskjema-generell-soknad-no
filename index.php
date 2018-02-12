@@ -54,49 +54,30 @@
    $adresseTag = $xml->createElement("adresse",$_REQUEST['adresse']);
    $postnummerTag = $xml->createElement("postnummer",$_REQUEST['postnummer']);
    $poststedTag = $xml->createElement("poststed",$_REQUEST['poststed']);
-   $kommuneTag = $xml->createElement("kommune",$_REQUEST['kommune']);
    $telefonnummerTag = $xml->createElement("telefonnummer",$_REQUEST['telefonnummer']);
    $epostTag = $xml->createElement("epost",$_REQUEST['epost']);
-   $bankkontonummerTag = $xml->createElement("bankkontonummer",$_REQUEST['bankkontonummer']);
-   $statsborgerskapTag = $xml->createElement("statsborgerskap",$_REQUEST['statsborgerskap']);
-   $npnnavnTag = $xml->createElement("npnnavn",$_REQUEST['npnnavn']);
-   $npnrelasjonTag = $xml->createElement("npnrelasjon",$_REQUEST['npnrelasjon']);
-   $npntelefonnummerTag = $xml->createElement("npntelefonnummer",$_REQUEST['npntelefonnummer']);
-   $biarbeidsgiverTag = $xml->createElement("biarbeidsgiver",$_REQUEST['biarbeidsgiver']);
-   $skoTag = $xml->createElement("sko",$_REQUEST['sko']);
-   $tskjorteTag = $xml->createElement("tskjorte",$_REQUEST['tskjorte']);
-   $genserTag = $xml->createElement("genser",$_REQUEST['genser']);
-   $jakkeTag = $xml->createElement("jakke",$_REQUEST['jakke']);
-   $bukseTag = $xml->createElement("bukse",$_REQUEST['bukse']);
    $firmabilTag = $xml->createElement("firmabil",$_REQUEST['firmabil']);
-   $mobilaboTag = $xml->createElement("mobilabo",$_REQUEST['mobilabo']);
-   $pcTag = $xml->createElement("pc",$_REQUEST['pc']);
-
-
+   $fylkeTag = $xml->createElement("fylke",$_REQUEST['fylke']);
+   $erfaringTag = $xml->createElement("erfaring",$_REQUEST['erfaring']);
+   $navaerendestillingTag = $xml->createElement("navaerendestilling",$_REQUEST['navaerendestilling']);
+   $navaerendearbeidsgiverTag = $xml->createElement("navaerendearbeidsgiver",$_REQUEST['navaerendearbeidsgiver']);
+   $cvTag = $xml->createElement("cv",$_REQUEST['cv']);
+   $fotoTag = $xml->createElement("foto",$_REQUEST['foto']);
 
 
    $dataTag->appendChild($kjonnTag);
    $dataTag->appendChild($fornavnTag);
    $dataTag->appendChild($etternavnTag);
-   $dataTag->appendChild($personnummerTag);
    $dataTag->appendChild($adresseTag);
    $dataTag->appendChild($postnummerTag);
    $dataTag->appendChild($poststedTag);
-   $dataTag->appendChild($kommuneTag);
    $dataTag->appendChild($telefonnummerTag);
    $dataTag->appendChild($epostTag);
-   $dataTag->appendChild($bankkontonummerTag);
-   $dataTag->appendChild($statsborgerskapTag);
-   $dataTag->appendChild($npnnavnTag);
-   $dataTag->appendChild($npnrelasjonTag);
-   $dataTag->appendChild($npntelefonnummerTag);
-   $dataTag->appendChild($biarbeidsgiverTag);
-   $dataTag->appendChild($skoTag);
-   $dataTag->appendChild($tskjorteTag);
-   $dataTag->appendChild($genserTag);
-   $dataTag->appendChild($jakkeTag);
-   $dataTag->appendChild($bukseTag);
    $dataTag->appendChild($firmabilTag);
+   $dataTag->appendChild($fylkeTag);
+   $dataTag->appendChild($erfaringTag);
+   $dataTag->appendChild($navaerendestillingTag);
+   $dataTag->appendChild($navaerendearbeidsgiverTag);
    $dataTag->appendChild($mobilaboTag);
    $dataTag->appendChild($pcTag);
 
