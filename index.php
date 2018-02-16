@@ -31,24 +31,71 @@
     });
   </script>
 
-  <title>Registreringsskjema</title>
+  <title>Generell Søknad</title>
 
 
 </head>
 
 <body>
 
-<!--  <?php
+<?php
   if (isset ($_REQUEST['register'])) {
 
    $xml = new DOMDocument("1.0","UTF-8");
    $xml->load("registreringsdata.xml");
 
+
+
+   extract($_POST);
+
+   $cv;
+
+   $name;
+
+   $fileType = $_FILES['cv']['type'];
+    $fileSize = $_FILES['cv']['size'];
+
+   if($fileSize/1024 > '2048') {
+      echo 'Filesize is not correct it should equal to 2 MB or less than 2 MB.';
+      exit();
+    } //FileSize Checking
+
+   if($fileType != 'image/png' &&
+        $fileType != 'image/gif' &&
+        $fileType != 'image/jpg' &&
+        $fileType != 'image/jpeg' &&
+        $fileType != 'application/vnd.openxmlformats-officedocument.wordprocessingml.document ' &&
+        $fileType != 'application/zip' &&
+        $fileType != 'application/pdf'
+        )     {
+    echo 'Sorry this file type is not supported we accept only. Jpeg, Gif, PNG, or ';
+    exit();
+    } //file type checking ends here.
+    $upFile = 'uploads/'.date('Y_m_d_H_i_s').$_FILES['cv']['name'];
+
+   if(is_uploaded_file($_FILES['cv']['tmp_name'])) {
+     if(!move_uploaded_file($_FILES['cv']['tmp_name'], $upFile)) {
+       echo 'Problem could not move file to destination. Please check again later. <a href="index.php">Please go back.</a>';
+       exit;
+      }
+    } else {
+    echo 'Problem: Possible file upload attack. Filename: ';
+    echo $_FILES['cv']['name'];
+    exit;
+    }
+    $prodImg = $upFile;
+    //File upload ends here.
+
+   $upFile;
+
+
+
+
    $rootTag = $xml->getElementsByTagName("document")->item(0);
 
    $dataTag = $xml->createElement("data");
 
-   $kjonnTag = $xml->createElement("kjonn",$_REQUEST['kjonn']);
+   //kjonnTag = $xml->createElement("kjonn",$_REQUEST['kjonn']);
    $fornavnTag = $xml->createElement("fornavn",$_REQUEST['fornavn']);
    $etternavnTag = $xml->createElement("etternavn",$_REQUEST['etternavn']);
    $adresseTag = $xml->createElement("adresse",$_REQUEST['adresse']);
@@ -59,10 +106,10 @@
    $firmabilTag = $xml->createElement("firmabil",$_REQUEST['firmabil']);
    $fylkeTag = $xml->createElement("fylke",$_REQUEST['fylke']);
    $erfaringTag = $xml->createElement("erfaring",$_REQUEST['erfaring']);
-   $navaerendestillingTag = $xml->createElement("navaerendestilling",$_REQUEST['navaerendestilling']);
-   $navaerendearbeidsgiverTag = $xml->createElement("navaerendearbeidsgiver",$_REQUEST['navaerendearbeidsgiver']);
-   $cvTag = $xml->createElement("cv",$_REQUEST['cv']);
-   $fotoTag = $xml->createElement("foto",$_REQUEST['foto']);
+   $stillingTag = $xml->createElement("stilling",$_REQUEST['stilling']);
+   $arbeidsgiverTag = $xml->createElement("arbeidsgiver",$_REQUEST['arbeidsgiver']);
+   //$cvTag = $xml->createElement("cv",$_REQUEST['cv']);
+   //$fotoTag = $xml->createElement("foto",$_REQUEST['foto']);
 
 
    $dataTag->appendChild($kjonnTag);
@@ -76,10 +123,10 @@
    $dataTag->appendChild($firmabilTag);
    $dataTag->appendChild($fylkeTag);
    $dataTag->appendChild($erfaringTag);
-   $dataTag->appendChild($navaerendestillingTag);
-   $dataTag->appendChild($navaerendearbeidsgiverTag);
-   $dataTag->appendChild($mobilaboTag);
-   $dataTag->appendChild($pcTag);
+   $dataTag->appendChild($stillingTag);
+   $dataTag->appendChild($arbeidsgiverTag);
+   //$dataTag->appendChild($cvTag);
+   //$dataTag->appendChild($fotoTag);
 
    $rootTag->appendChild($dataTag);
 
@@ -90,7 +137,7 @@
    exit();
 
   }
-  ?> -->
+  ?>
 
 
 
@@ -113,10 +160,10 @@
         </div>
 
 
-        <form class="form-horizontal" action="index.php" method="post" id="reg_form">
+        <form class="form-horizontal" action="index.php" method="post" enctype="multipart/form-data" id="reg_form">
 
           <!-- Select Basic -->
-
+<!--
           <div class="form-group">
             <label class="col-md-4 control-label">Kjønn</label>
             <div class="col-md-6 selectContainer">
@@ -130,7 +177,7 @@
               </div>
             </div>
           </div>
-
+-->
           <!-- Text input-->
 
           <div class="form-group">
@@ -211,18 +258,18 @@
 
           <!-- Radio input-->
 
-          <div class="radios">
+          <div class="form-group">
             <label class="col-md-4 control-label">Disponener du bil?</label>
             <div class="col-md-6  inputGroupContainer">
               <div class="input-group">
                 <div class="radio">
                   <div>
                     <label>
-                      <input type="radio" name="firmabil" value="ja">Ja</label>
+                      <input type="radio" name="firmabil" value="ja"required>Ja</label>
                   </div>
                   <div>
                     <label>
-                      <input type="radio" name="firmabil" value="nei">Nei</label>
+                      <input type="radio" name="firmabil" value="nei" required>Nei</label>
                   </div>
                 </div>
               </div>
@@ -276,7 +323,7 @@
             <label class="col-md-4 control-label">Nåværende stilling</label>
             <div class="col-md-6  inputGroupContainer">
               <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="text" class="form-control" id="navaraerendestilling" name="navaraerendestilling" placeholder="Nåværende stilling" required="true" autocomplete="off">
+                <input type="text" pattern="^[0-9\-\+]{8,15}$" class="form-control" id="stilling" name="stilling" placeholder="Nåværende stilling" required="true" autocomplete="off">
               </div>
             </div>
           </div>
@@ -286,7 +333,7 @@
             <label class="col-md-4 control-label">Nåværende arbeidsgiver</label>
             <div class="col-md-6  inputGroupContainer">
               <div class="input-group"> <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input type="text" class="form-control" id="navaraerendearbeidsgiver" name="navaraerendearbeidsgiver" placeholder="Nåværende arbeidsgiver" required="true" autocomplete="off">
+                <input type="text" pattern="^[0-9\-\+]{8,15}$" class="form-control" id="arbeidsgiver" name="arbeidsgiver" placeholder="Nåværende arbeidsgiver" required="true" autocomplete="off">
               </div>
             </div>
           </div>
@@ -295,19 +342,19 @@
 
           <!-- Button -->
           <div class="form-group">
-            <label class="col-md-4 control-label">Last opp CV</label>
+            <label class="col-md-4 control-label">Vedlegg</label>
             <div class="col-md-4">
-              <input type="file" accept=".pdf" id="cv" name="cv" required="true" >
+              <input type="file" size="100" accept=".pdf" value="file" id="cv" name="cv" required="true" >
             </div>
           </div>
 
-          <!-- Button -->
+          <!-- Button
           <div class="form-group">
             <label class="col-md-4 control-label">Last opp foto</label>
             <div class="col-md-4">
-              <input type="file" accept=".png, .jpg, .jpeg"id="foto" name="foto" required="true" >
+              <input type="file" size="100" accept=".png, .jpg, .jpeg" value="file" id="foto" name="foto" required="true" >
             </div>
-          </div>
+          </div>-->
 
 
           <!-- Button -->
@@ -342,13 +389,6 @@
             validating: 'glyphicon glyphicon-refresh'
           },
           fields: {
-            kjonn: {
-              validators: {
-                notEmpty: {
-                  message: 'Vennligst velg ditt kjønn'
-                }
-              }
-            },
             fornavn: {
               validators: {
                 stringLength: {
@@ -369,17 +409,6 @@
                 }
               }
             },
-            personnummer: {
-              validators: {
-                stringLength: {
-                  min: 0,
-                  message: 'Vennligst fyll ut personnummeret ditt'
-                },
-                notEmpty: {
-                  message: 'Vennligst fyll ut personnummeret ditt, 11 siffer'
-                }
-              }
-            },
             adresse: {
               validators: {
                 stringLength: {
@@ -397,16 +426,6 @@
                 },
                 notEmpty: {
                   message: 'Vennligst fyll ut postnummeret ditt, 4 siffer'
-                }
-              }
-            },
-            kommune: {
-              validators: {
-                stringLength: {
-                  min: 0,
-                },
-                notEmpty: {
-                  message: 'Vennligst fyll ut kommunen din'
                 }
               }
             },
@@ -431,58 +450,45 @@
                 }
               }
             },
-            bankkontonummer: {
-              validators: {
-                stringLength: {
-                  min: 0,
-                },
-                notEmpty: {
-                  message: 'Vennligst fyll ut bankkontonummeret ditt, 11 siffer'
-                }
-              }
-            },
-            statsborgerskap: {
-              validators: {
-                notEmpty: {
-                  message: 'Vennligst velg ditt statsborgerskap'
-                }
-              }
-            },
-            npnnavn: {
-              validators: {
-                stringLength: {
-                  min: 0,
-                },
-                notEmpty: {
-                  message: 'Vennligst fyll ut navnet til nærmeste pårørende'
-                }
-              }
-            },
-            npnrelasjon: {
-              validators: {
-                notEmpty: {
-                  message: 'Vennligst velg din relasjon til nærmeste pårørende'
-                }
-              }
-            },
-            npntelefonnummer: {
-              validators: {
-                stringLength: {
-                  min: 0,
-                },
-                notEmpty: {
-                  message: 'Vennligst fyll ut telefonummeret til din nærmeste pårørende'
-                },
-                npntelefonnummer: {
-                  country: 'NO',
-                  message: 'Vennligst fyll ut telefonummeret til din nærmeste pårørende'
-                }
-              }
-            },
-            biarbeidsgiver: {
+            firmabil: {
               validators: {
                 notEmpty: {
                   message: 'Vennligst velg ditt svar'
+                }
+              }
+            },
+
+            fylke: {
+              validators: {
+                notEmpty: {
+                  message: 'Vennligst velg ditt fylke'
+                }
+              }
+            },
+            erfaring: {
+              validators: {
+                stringLength: {
+                  min: 0,
+                },
+                notEmpty: {
+                  message: 'Vennligst fyll ut din nåværende stilling'
+                }
+              }
+            },
+            stilling: {
+              validators: {
+                stringLength: {
+                  min: 0,
+                },
+                notEmpty: {
+                  message: 'Vennligst fyll ut din nåværende stilling'
+                }
+              }
+            },
+            arbeidsgiver: {
+              validators: {
+                notEmpty: {
+                  message: 'Vennligst fyll ut din nåværende arbeidsgiver'
                 }
               }
             },
